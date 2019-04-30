@@ -15,6 +15,8 @@
 		A1BBAE08226F4CBF002E41CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1BBAE06226F4CBF002E41CF /* Main.storyboard */; };
 		A1BBAE0A226F4CC0002E41CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BBAE09226F4CC0002E41CF /* Assets.xcassets */; };
 		A1BBAE0D226F4CC0002E41CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1BBAE0B226F4CC0002E41CF /* LaunchScreen.storyboard */; };
+		A1CCD7B12271EFC2004ABC37 /* NinjaAssets 4 in Resources */ = {isa = PBXBuildFile; fileRef = A1CCD7B02271EFC2004ABC37 /* NinjaAssets 4 */; };
+		A1CCD7B32271EFC9004ABC37 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCD7B22271EFC9004ABC37 /* VectorMath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A1BBAE09226F4CC0002E41CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1BBAE0C226F4CC0002E41CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1BBAE0E226F4CC0002E41CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1CCD7B02271EFC2004ABC37 /* NinjaAssets 4 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "NinjaAssets 4"; path = "../../Downloads/NinjaAssets 4"; sourceTree = "<group>"; };
+		A1CCD7B22271EFC9004ABC37 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VectorMath.swift; path = "../../Downloads/NinjaAssets 4/VectorMath.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,8 @@
 			children = (
 				A1BBADFB226F4CBF002E41CF /* EcoFriends */,
 				A1BBADFA226F4CBF002E41CF /* Products */,
+				A1CCD7B22271EFC9004ABC37 /* VectorMath.swift */,
+				A1CCD7B02271EFC2004ABC37 /* NinjaAssets 4 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +141,7 @@
 				A1BBADFF226F4CBF002E41CF /* GameScene.sks in Resources */,
 				A1BBAE0A226F4CC0002E41CF /* Assets.xcassets in Resources */,
 				A1BBAE0D226F4CC0002E41CF /* LaunchScreen.storyboard in Resources */,
+				A1CCD7B12271EFC2004ABC37 /* NinjaAssets 4 in Resources */,
 				A1BBAE01226F4CBF002E41CF /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1CCD7B32271EFC9004ABC37 /* VectorMath.swift in Sources */,
 				A1BBAE03226F4CBF002E41CF /* GameScene.swift in Sources */,
 				A1BBAE05226F4CBF002E41CF /* GameViewController.swift in Sources */,
 				A1BBADFD226F4CBF002E41CF /* AppDelegate.swift in Sources */,
