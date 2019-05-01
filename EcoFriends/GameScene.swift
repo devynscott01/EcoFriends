@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        background.scale(to: CGSize.init(width: 1334, height: 750))
+        background.scale(to: CGSize.init(width: 1400, height: 750))
         background.zPosition = 0
         background.position = CGPoint(x: self.size.width / 40, y: self.size.height / 40)
         physicsWorld.contactDelegate = self
@@ -45,20 +45,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func trash () {
         let trashPiece = SKSpriteNode(imageNamed: "cup")
+        trashPiece.scale(to: CGSize(width: 35, height: 35))
         let actualY = random(min: trashPiece.size.height/2, max: size.height - trashPiece.size.height/2)
         
-        trashPiece.position = CGPoint(x: size.width + trashPiece.size.width/2, y: actualY)
-        trashPiece.scale(to: CGSize(width: 35, height: 35))
+        trashPiece.position = CGPoint(x: size.width + trashPiece.size.width/2, y: -50)
+        
         trashPiece.physicsBody = SKPhysicsBody(rectangleOf: trashPiece.size)
         trashPiece.physicsBody?.affectedByGravity = false
         trashPiece.physicsBody?.friction = 0
-        
+        trashPiece.zPosition = 3
         
         addChild(trashPiece)
         
         
         let actualDuration = CGFloat.random(in: 1.0...10.0)
-        let actionMove = SKAction.move(to: CGPoint(x: 100, y: actualY), duration: TimeInterval(actualDuration))
+        let actionMove = SKAction.move(to: CGPoint(x: -700, y: -50), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         trashPiece.run(SKAction.sequence([actionMove, actionMoveDone]))
         
