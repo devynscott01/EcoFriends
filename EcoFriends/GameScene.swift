@@ -17,8 +17,10 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var background = SKSpriteNode(imageNamed: "sea")
     
+    var background = SKSpriteNode(imageNamed: "sea")
+    //var trashPiece = SKSpriteNode(imageNamed: "cup")
+
     
     
     override func didMove(to view: SKView) {
@@ -31,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsBody = border
         
-       
+    
     addChild(background)
     
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(trash), SKAction.wait(forDuration: 1.0)])))
@@ -40,14 +42,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // >:) hi
-
-
-    
     func trash () {
-        let trashPiece = SKSpriteNode(imageNamed: "cup")
-        trashPiece.scale(to: CGSize(width: 35, height: 35))
-        let actualY = random(min: trashPiece.size.height/2, max: size.height - trashPiece.size.height/2)
+       
+        var spriteImages: [SKTexture] = []
         
+        spriteImages.append(SKTexture(imageNamed: "flipflop"))
+         spriteImages.append(SKTexture(imageNamed: "bottle"))
+         spriteImages.append(SKTexture(imageNamed: "can"))
+         spriteImages.append(SKTexture(imageNamed: "cup"))
+         spriteImages.append(SKTexture(imageNamed: "paper"))
+         spriteImages.append(SKTexture(imageNamed: "soap"))
+         spriteImages.append(SKTexture(imageNamed: "straw"))
+         spriteImages.append(SKTexture(imageNamed: "waterbottle"))
+        
+    
+       
+        let rand = Int(arc4random_uniform(UInt32(spriteImages.count)))
+        let textures = spriteImages[rand]
+        
+         print("random image generated")
+        
+        let trashPiece = SKSpriteNode()
+        
+        trashPiece.texture = textures
+        trashPiece.size = textures.size()
+        
+        print("working")
+        trashPiece.isUserInteractionEnabled = false
+        trashPiece.scale(to: CGSize(width: 100, height: 100))
+        let actualY = random(min: trashPiece.size.height/2, max: size.height - trashPiece.size.height/2)
+       
         trashPiece.position = CGPoint(x: size.width + trashPiece.size.width/2, y: -50)
         
         trashPiece.physicsBody = SKPhysicsBody(rectangleOf: trashPiece.size)
@@ -57,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(trashPiece)
         
-        
+        print("working 2")
         let actualDuration = CGFloat.random(in: 1.0...10.0)
         let actionMove = SKAction.move(to: CGPoint(x: -700, y: -50), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
@@ -71,5 +95,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func random(min: CGFloat, max: CGFloat) -> CGFloat {
         return random() * (max-min) + min
     }
-}
+    
+   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    print("working 3")
+        let touch = touches.first
+        if let location = touch?.location(in: self){
+            print(location)
+    
+            for trash in self.nodes(at: location){
+                print(trash.name)
+                trash.isUserInteractionEnabled = false
+                if trash.name == "cup"{
+                    trash.removeFromParent()
+    
+    }
+    
+            }
 
+ }
+    
+
+}
+    
+}
