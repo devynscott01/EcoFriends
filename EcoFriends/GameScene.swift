@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import UIKit
+import SafariServices
 
 struct PhysicsCategory {
     static let trashPiece: UInt32 = 0b1
@@ -37,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     addChild(background)
     
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(trash), SKAction.wait(forDuration: 1.0)])))
+        
+        
       }
     
     
@@ -69,21 +72,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         print("working")
         trashPiece.isUserInteractionEnabled = false
-        trashPiece.scale(to: CGSize(width: 100, height: 100))
-        let actualY = random(min: trashPiece.size.height/2, max: size.height - trashPiece.size.height/2)
+        trashPiece.scale(to: CGSize(width: 75, height: 75))
+        let actualY = random(min: -300, max: 0)
        
-        trashPiece.position = CGPoint(x: size.width + trashPiece.size.width/2, y: -50)
+        trashPiece.position = CGPoint(x: size.width + trashPiece.size.width/2, y: actualY)
         
         trashPiece.physicsBody = SKPhysicsBody(rectangleOf: trashPiece.size)
         trashPiece.physicsBody?.affectedByGravity = false
         trashPiece.physicsBody?.friction = 0
         trashPiece.zPosition = 3
-        
+        trashPiece.name = "garbage"
         addChild(trashPiece)
         
         print("working 2")
-        let actualDuration = CGFloat.random(in: 1.0...10.0)
-        let actionMove = SKAction.move(to: CGPoint(x: -700, y: -50), duration: TimeInterval(actualDuration))
+        let actualDuration = CGFloat.random(in: 5.0...8.0)
+        let actionMove = SKAction.move(to: CGPoint(x: -700, y: actualY), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         trashPiece.run(SKAction.sequence([actionMove, actionMoveDone]))
         
@@ -97,24 +100,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    print("working 3")
-        let touch = touches.first
-        if let location = touch?.location(in: self){
-            print(location)
     
-            for trash in self.nodes(at: location){
-                print(trash.name)
-                trash.isUserInteractionEnabled = false
-                if trash.name == "cup"{
-                    trash.removeFromParent()
-    
+    for touch in touches{
+        
+        let location = touch.location(in: self)
+        let touchedNode = self.atPoint(location)
+        
+        if touchedNode.name == "garbage"{
+            
+            touchedNode.removeFromParent()
+            break;
+            
+        }
+        
     }
     
-            }
+    
+                }
+    
 
  }
     
 
-}
+
     
-}
+
