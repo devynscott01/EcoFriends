@@ -36,10 +36,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     
     addChild(background)
-    
+       /*if let url = URL(string: "https://www.oceanicsociety.org/blog/1720/7-ways-to-reduce-ocean-plastic-pollution-today") {
+            UIApplication.shared.open(url)
+        }*/
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(trash), SKAction.wait(forDuration: 1.0)])))
         
-        
+        startButton()
       }
     
     
@@ -117,7 +119,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
                 }
-    
+    func startButton(){
+        var button = SKSpriteNode(imageNamed: "button-play")
+        button.zPosition = 100
+        button.scale(to: CGSize(width: 500, height: 250))
+        
+        addChild(button)
+        
+    }
 
  }
     
