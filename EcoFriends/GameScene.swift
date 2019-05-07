@@ -40,8 +40,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             UIApplication.shared.open(url)
         }*/
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(trash), SKAction.wait(forDuration: 1.0)])))
-        
-        startButton()
+   
+        let button = SKSpriteNode(imageNamed: "button-play")
+        button.zPosition = 100
+        button.scale(to: CGSize(width: 500, height: 250))
+        button.name = "play"
+        addChild(button)
       }
     
     
@@ -108,25 +112,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let location = touch.location(in: self)
         let touchedNode = self.atPoint(location)
         
-        if touchedNode.name == "garbage"{
+        if touchedNode.name == "garbage" {
             
             touchedNode.removeFromParent()
             break;
-            
         }
+            else if touchedNode.name == "play"{
+                touchedNode.removeFromParent()
+                break;
+            }
+            
+        
         
     }
     
     
                 }
-    func startButton(){
-        var button = SKSpriteNode(imageNamed: "button-play")
-        button.zPosition = 100
-        button.scale(to: CGSize(width: 500, height: 250))
-        
-        addChild(button)
-        
-    }
+    
 
  }
     
