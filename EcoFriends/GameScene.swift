@@ -36,9 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     
     addChild(background)
-       /*if let url = URL(string: "https://www.oceanicsociety.org/blog/1720/7-ways-to-reduce-ocean-plastic-pollution-today") {
-            UIApplication.shared.open(url)
-        }*/
+    
+        
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run(trash), SKAction.wait(forDuration: 1.0)])))
    
         let button = SKSpriteNode(imageNamed: "button-play")
@@ -46,6 +45,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         button.scale(to: CGSize(width: 500, height: 250))
         button.name = "play"
         addChild(button)
+        
+        //if button.position == CGPoint(x: 0, y: 0){
+           // DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+            //    self.trash()
+            //    })
+        //}
+        
+        
+        let globe = SKSpriteNode(imageNamed: "globe")
+        globe.zPosition = 100
+        globe.scale(to: CGSize(width: 75, height: 75))
+        globe.name = "earth"
+        globe.position = CGPoint(x: 600, y: 250)
+        addChild(globe)
       }
     
     
@@ -122,7 +135,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break;
             }
             
-        
+            else if touchedNode.name == "earth"{
+            if let url = URL(string: "https://www.oceanicsociety.org/blog/1720/7-ways-to-reduce-ocean-plastic-pollution-today") {
+                UIApplication.shared.open(url)
+                
+            }
+        }
         
     }
     
